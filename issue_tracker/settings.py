@@ -1,7 +1,11 @@
 # Django settings for issue_tracker project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+CONFIG_ROOT = os.path.realpath(os.path.dirname(__file__))
+SITE_ROOT = os.path.join(CONFIG_ROOT, '../')
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),

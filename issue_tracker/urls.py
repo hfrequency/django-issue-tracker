@@ -10,6 +10,8 @@ urlpatterns = patterns('django.views.generic.simple',
     (r'^$', 'direct_to_template', {
         'template': 'index.html'
     }),
+   
+    url(r'^', include('core.urls')),
     url(r'^', include('accounts.urls')),
     # url(r'^$', 'issue_tracker.views.home', name='home'),
     # url(r'^issue_tracker/', include('issue_tracker.foo.urls')),

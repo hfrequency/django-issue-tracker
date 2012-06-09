@@ -7,5 +7,5 @@ from django.contrib.auth.forms import AuthenticationForm
 urlpatterns = patterns('',
     (r'^register/$', register, {}, 'register' ),
     (r'^login/$', login, {}, 'login' ),
-        (r'^logout/$', logout_then_login, {}, 'logout'),
+        (r'^logout/$', logout_then_login, {'login_url':'/login/'}, 'logout'),
 )

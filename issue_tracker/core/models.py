@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Comments(models.Model):
-    comment = model.CharField(max_length=500)
-    user = model.ForeignKey(User)
+    comment = models.CharField(max_length=500)
+    user = models.ForeignKey(User)
 
 class Level(models.Model):
     level_choices = (
@@ -26,7 +26,6 @@ class Status(models.Model):
     status = models.CharField(max_length=10, choices=status_choices)
 
 class Issue(models.Model):
-    project = models.ForeignKey(Project)
     status = models.ForeignKey(Status)
     level = models.ForeignKey(Level)
     comments = models.ForeignKey(Comments)
@@ -40,7 +39,7 @@ class Issue(models.Model):
     # percentage_completed  
 
 class Project(models.Model):
-    user = model.ForeignKey(User)
+    user = models.ForeignKey(User)
     issue = models.ForeignKey(Issue)
     name = models.CharField(max_length=100)
     version = models.CharField(max_length=15)

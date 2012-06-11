@@ -109,7 +109,7 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
 
-LOGIN_REDIRECT_URL = '/issues/'
+LOGIN_REDIRECT_URL = '/projects/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

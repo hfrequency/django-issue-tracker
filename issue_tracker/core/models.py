@@ -40,8 +40,8 @@ class Issue(models.Model):
 
 class Project(models.Model):
     user = models.ForeignKey(User)
-    issue = models.ForeignKey(Issue)
+    issue = models.ForeignKey(Issue, null=True)
     name = models.CharField(max_length=100)
     version = models.CharField(max_length=15)
-    release_date = models.DateField()
+    release_date = models.DateField(null=True)
 

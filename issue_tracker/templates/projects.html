@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="nav">
+       <a href="{% url logout %}">Logout</a>
+    </div>
+    <hr>
+Project List <br />
+    {% for project in projects %}
+        project name:<a href="/project/{{ project.id }}/">{{ project.name }} </a><br/>     
+        project id:{{ project.id }}     <br/> 
+        version:{{ project.version }}   <br/>
+    {% endfor %}
+{% endblock %}

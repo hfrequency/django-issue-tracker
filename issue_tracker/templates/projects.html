@@ -6,9 +6,16 @@
     </div>
     <hr>
 Project List <br />
+{% if projects %}
     {% for project in projects %}
-        project name:<a href="/project/{{ project.id }}/">{{ project.name }} </a><br/>     
-        project id:{{ project.id }}     <br/> 
-        version:{{ project.version }}   <br/>
+        project name:<a href="/projects/{{ project.id }}/">{{ project.name }} </a><br/>     
     {% endfor %}
+{% endif %}
+
+{% if project %}
+    project name : {{ project.name }}<br/>
+    project id:{{ project.id }}     <br/> 
+    version:{{ project.version }}   <br/>
+{% endif %}
+
 {% endblock %}

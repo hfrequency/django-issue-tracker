@@ -8,3 +8,10 @@ def projects(request):
     return render_to_response("projects.html", {
         'projects' : projects,
     })
+
+@login_required(login_url='/login/')
+def project_detail(request, project_id):
+    project = Project.objects.get(id=project_id) 
+    return render_to_response("projects.html", {
+        'project' : project,
+    })

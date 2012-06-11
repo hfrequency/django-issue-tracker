@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from core.models import *
 
 @login_required(login_url='/login/')
-def issues(request):
+def projects(request):
     projects = Project.objects.all() 
     return render_to_response("projects.html", {
         'projects' : projects,

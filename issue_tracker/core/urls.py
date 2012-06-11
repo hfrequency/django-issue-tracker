@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from core.views import issues
+from core.views import projects
 
 urlpatterns = patterns('',
     (r'^projects/(?P<project_id>\d+)/$', projects, {}, 'projects' ),

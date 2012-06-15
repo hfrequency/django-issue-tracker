@@ -6,16 +6,33 @@
     </div>
     <hr>
 Project List <br />
-{% if projects %}
-    {% for project in projects %}
-        project name:<a href="/projects/{{ project.id }}/">{{ project.name }} </a><br/>     
+
+    <!-- This snippet taken from http://djangosnippets.org/snippets/1182/ -->
+    <form method="post" action="/projects/">{% csrf_token %}
+    {% for f in formset.management_form %}
+        {{ f }}
     {% endfor %}
-{% endif %}
-
-{% if project %}
-    project name : {{ project.name }}<br/>
-    project id:{{ project.id }}     <br/> 
-    version:{{ project.version }}   <br/>
-{% endif %}
-
+    <table>
+        <tr>
+        {% for field in formset.forms.0 %}
+            {% if not field.is_hidden %}
+                <th>{{ field.label }}</th>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        {% for f in formset.forms %}
+            <tr>
+            {% for field in f %}
+                {% if not field.is_hidden %}
+                    <td valign="bottom">{% for error in field.errors %} {{error}}  {% endfor %} <br/>{{ field }}</td>
+                {% else %}
+                    {{ field }} 
+                {% endif %}
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="Save" >
+    </form>
+    <!-- end snippet -->
 {% endblock %}

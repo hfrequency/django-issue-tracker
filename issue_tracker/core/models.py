@@ -28,7 +28,7 @@ class Status(models.Model):
 class Issue(models.Model):
     status = models.ForeignKey(Status)
     level = models.ForeignKey(Level)
-    comments = models.ForeignKey(Comments)
+    comments = models.ForeignKey(Comments, null=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
     priority = models.CharField(max_length=10)  
@@ -42,6 +42,6 @@ class Project(models.Model):
     user = models.ForeignKey(User)
     issue = models.ForeignKey(Issue, null=True)
     name = models.CharField(max_length=100)
-    version = models.CharField(max_length=15)
+    version = models.CharField(max_length=15, null=True)
     release_date = models.DateField(null=True)
 

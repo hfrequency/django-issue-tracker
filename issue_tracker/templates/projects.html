@@ -19,6 +19,7 @@ Project List <br />
                 <th>{{ field.label }}</th>
             {% endif %}
         {% endfor %}
+                <th></th>
         </tr>
         {% for f in formset.forms %}
             <tr>
@@ -29,6 +30,7 @@ Project List <br />
                     {{ field }} 
                 {% endif %}
             {% endfor %}
+            <td valign="bottom"><a href="/issues/">Details</a></td>
             </tr>
         {% endfor %}
     </table>

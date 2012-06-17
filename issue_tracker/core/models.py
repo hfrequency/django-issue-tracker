@@ -36,5 +36,5 @@ class Issue(models.Model):
 class Comments(models.Model):
     issue = models.ForeignKey(Issue)
     comment = models.CharField(max_length=500)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User,null=True, blank=True)
 

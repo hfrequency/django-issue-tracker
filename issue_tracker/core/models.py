@@ -5,16 +5,6 @@ class Comments(models.Model):
     comment = models.CharField(max_length=500)
     user = models.ForeignKey(User)
 
-class Level(models.Model):
-    level_choices = (
-        (0, "LOW"),
-        (1, "MEDIUM"),
-        (2, "HIGH"),
-        (3, "CRITICAL"),
-        (4, "BLOCKER"),
-    )
-    level = models.CharField(max_length=10, choices=level_choices)
-
 class Project(models.Model):
     user = models.ForeignKey(User)
     # issue = models.ForeignKey(Issue, null=True)

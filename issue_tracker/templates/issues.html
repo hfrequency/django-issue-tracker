@@ -30,11 +30,12 @@ Issues <br />
                     {{ field }}
                 {% endif %}
             {% endfor %}
-            <td valign="bottom"><a href="/comments/{{ f.instance.id }}">See Comments</a></td>
+            <td valign="bottom"><a href="/comments/{{ project_id }}/{{ f.instance.id }}">See Comments</a></td>
             </tr>
         {% endfor %}
     </table>
     <input type="submit" value="Save" >
+    <input type="button" value="Go to Projects" onclick="window.location.href='/projects/';">{% csrf_token %}
     </form>
     <!-- end snippet -->
 {% endblock %}

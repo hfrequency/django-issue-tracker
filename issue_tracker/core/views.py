@@ -33,3 +33,27 @@ def projects(request):
         'formset' : formset
     }, context_instance=RequestContext(request))
 
+
+@login_required(login_url='/login/')
+@csrf_protect
+def issues(request, project_id):
+    # TODO check if this is the best way to get the current user in session.
+    user = User.objects.get(username=request.META["USER"])
+    project = Project.objects.get(id=project_id)
+
+    IssuesFormSet = inlineformset_factory(Project, Issue, max_num=10, extra=1, \
+        fields = ('status', 'level', 'title', 'description'))
+
+    if request.method == 'POST':
+        formset = IssuesFormSet(request.POST, instance=project)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect('/issues/%s' % project_id)
+    else:
+        formset = IssuesFormSet(instance=project)
+
+    return render_to_response("issues.html", {
+        'formset' : formset,
+        'project_id' : project_id
+    }, context_instance=RequestContext(request))
+

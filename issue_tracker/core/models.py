@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Comments(models.Model):
+    issue = models.ForeignKey(Issue)
     comment = models.CharField(max_length=500)
     user = models.ForeignKey(User)
 

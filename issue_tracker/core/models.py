@@ -25,7 +25,6 @@ class Issue(models.Model):
         ("4", "BLOCKER"),
     )
     level = models.CharField(max_length=10, choices=level_choices)
-    comments = models.ForeignKey(Comments, null=True)
     title = models.CharField(max_length=50, null=True)
     description = models.CharField(max_length=50, null=True)
     date_created = models.DateField(auto_now_add=True) 

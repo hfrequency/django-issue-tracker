@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class Project(models.Model):
     user = models.ForeignKey(User)
-    # issue = models.ForeignKey(Issue, null=True)
     name = models.CharField(max_length=100)
     version = models.CharField(max_length=15, null=True)
     release_date = models.DateField(null=True)

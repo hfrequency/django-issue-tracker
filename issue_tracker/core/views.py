@@ -59,24 +59,28 @@ def issues(request, project_id):
 
 @login_required(login_url='/login/')
 @csrf_protect
-def comments(request, issues_id):
+def comments(request, issue_id):
     # TODO check if this is the best way to get the current user in session.
     user = User.objects.get(username=request.META["USER"])
-    project = Project.objects.get(id=project_id)
+    issue = Issue.objects.get(id=issue_id)
 
-    CommentsFormSet = inlineformset_factory(Project, Issue, max_num=10, extra=1, \
-        fields = ('status', 'level', 'title', 'description'))
+    CommentsFormSet = inlineformset_factory(Issue, Comments, max_num=10, extra=1)
 
     if request.method == 'POST':
-        formset = IssuesFormSet(request.POST, instance=project)
+        formset = CommentsFormSet(request.POST, instance=issue)
         if formset.is_valid():
+            comment = formset.save(commit=False)
+            # we only want to update the new record (which is always the last
+            # form)
+            comment[-1].user = request.user
+            comment[-1].save()
             formset.save()
-            return HttpResponseRedirect('/issues/%s' % project_id)
+            return HttpResponseRedirect('/comments/%s' % issue_id)
     else:
-        formset = IssuesFormSet(instance=project)
+        formset = CommentsFormSet(instance=issue)
 
-    return render_to_response("issues.html", {
+    return render_to_response("comments.html", {
         'formset' : formset,
-        'project_id' : project_id
+        'issue_id' : issue_id
     }, context_instance=RequestContext(request))
 

@@ -59,7 +59,7 @@ def issues(request, project_id):
 
 @login_required(login_url='/login/')
 @csrf_protect
-def comments(request, issue_id):
+def comments(request, project_id, issue_id):
     # TODO check if this is the best way to get the current user in session.
     user = User.objects.get(username=request.META["USER"])
     issue = Issue.objects.get(id=issue_id)
@@ -75,12 +75,13 @@ def comments(request, issue_id):
             comment[-1].user = request.user
             comment[-1].save()
             formset.save()
-            return HttpResponseRedirect('/comments/%s' % issue_id)
+            return HttpResponseRedirect('/comments/%s/%s' % project_id, issue_id)
     else:
         formset = CommentsFormSet(instance=issue)
 
     return render_to_response("comments.html", {
         'formset' : formset,
+        'project_id' : project_id,
         'issue_id' : issue_id
     }, context_instance=RequestContext(request))
 

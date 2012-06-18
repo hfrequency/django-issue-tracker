@@ -35,6 +35,7 @@ class Issue(models.Model):
 
 class Comments(models.Model):
     issue = models.ForeignKey(Issue)
-    comment = models.CharField(max_length=500)
+    comment = models.TextField(max_length=500)
+    date_created = models.DateTimeField(null=False, auto_now_add=True) 
     user = models.ForeignKey(User,null=True, blank=True)
 

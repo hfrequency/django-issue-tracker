@@ -1,6 +1,10 @@
 /* Elements */
 
 /* Typography */
+* {
+    font-family: sans-serif, Arial, Courier;
+    font-size: medium;
+}
 
 /* Page Layout */
 

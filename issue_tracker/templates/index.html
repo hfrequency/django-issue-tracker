@@ -1,9 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <header>Welcome</header>
+  <header>Welcome to the Django Issue Tracker - Development version.</header>
   <div id="index_nav">
      <a href="{% url login %}">Login</a> |
      <a href="{% url register %}">Sign Up</a>
+  </div>
+  <div id="description">
+  <p>
+  This software is provided, as is, without guarantee of anything. Feel free to
+  reuse and distribute. Currently implemented features include:
+    <ul>
+      <li>A simple registration system </li>
+      <li>Project listings</li>
+      <li>Basic issue listings with details</li>
+      <li>Capacity to comment on an issue</li>
+    </ul>
+  </p>
+
+  <p>
+  Currently working on:
+    <ul>
+      <li>Adding more registration featuers, such as password retrieval.</li>
+      <li>Adding users to Groups</li>
+      <li>Filters for issues by status</li>
+      <li>Adding unit tests</li>
+      <li>Styling this ugly thing!</li>
+      <li>Changing the comments from editable text areas to just html.</li>
+      <li>Adding a 404 and 500 templates and handling</li>
+      <li>Right a deployment script for the cloud</li>
+    </ul>
+  </p>
+ 
   </div> 
 {% endblock %}

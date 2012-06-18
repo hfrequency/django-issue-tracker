@@ -64,7 +64,7 @@ def comments(request, project_id, issue_id):
     user = User.objects.get(username=request.META["USER"])
     issue = Issue.objects.get(id=issue_id)
 
-    CommentsFormSet = inlineformset_factory(Issue, Comments, max_num=10, extra=1)
+    CommentsFormSet = inlineformset_factory(Issue, Comments, max_num=10, extra=1, fields=['user', 'comment'], can_delete=True)
 
     if request.method == 'POST':
         formset = CommentsFormSet(request.POST, instance=issue)
@@ -75,7 +75,7 @@ def comments(request, project_id, issue_id):
             comment[-1].user = request.user
             comment[-1].save()
             formset.save()
-            return HttpResponseRedirect('/comments/%s/%s' % project_id, issue_id)
+            return HttpResponseRedirect('/comments/%s/%s' % (project_id, issue_id) )
     else:
         formset = CommentsFormSet(instance=issue)
 

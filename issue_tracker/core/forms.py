@@ -1,5 +1,5 @@
-from django.forms import ModelForm
-from issue_tracker.core.models import Project, Issue
+from django.forms import ModelForm, Textarea
+from issue_tracker.core.models import Project, Issue, Comments
 
 class ProjectForm(ModelForm):
     class Meta:
@@ -9,3 +9,10 @@ class ProjectForm(ModelForm):
 class IssueForm(ModelForm):
     class Meta:
         model = Issue
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comments
+        widgets = {
+            'comment': Textarea(attrs={'cols': 80, 'rows': 20}),
+        }

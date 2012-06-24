@@ -17,5 +17,12 @@ div#content {
 }
 
 /* Form Tags */
+input, select, textarea {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 4px;
+}
 
 /* Content */

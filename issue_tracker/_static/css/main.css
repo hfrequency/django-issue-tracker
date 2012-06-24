@@ -1,6 +1,6 @@
 /* Elements */
 body{
-    background-color: #B0C4DE;
+    background-color: #D3DFEF;
 }
 
 /* Typography */
@@ -27,6 +27,7 @@ input, select, textarea {
 
 /* Content */
 div#content{
+    background-color: #B0C4DE;
     padding : 10px;
     box-shadow: 5px 5px 5px 5px #000000;
     -moz-box-shadow: 5px 5px 5px 5px #000000;

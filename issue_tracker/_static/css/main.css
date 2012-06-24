@@ -26,3 +26,9 @@ input, select, textarea {
 }
 
 /* Content */
+div#content{
+    padding : 10px;
+    box-shadow: 5px 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px 5px #000000;
+    -webkit-box-shadow: 5px 5px 5px 5px #000000;
+}

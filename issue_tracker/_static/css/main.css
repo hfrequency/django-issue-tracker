@@ -1,5 +1,5 @@
 /* Elements */
-body{
+body {
     background-color: #D3DFEF;
 }
 
@@ -31,7 +31,7 @@ input, select, textarea {
 }
 
 /* Content */
-div#content{
+div#content {
     background-color: #B0C4DE;
     padding : 10px;
     box-shadow: 5px 5px 5px 5px #000000;

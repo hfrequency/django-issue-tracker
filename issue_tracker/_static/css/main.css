@@ -9,6 +9,11 @@ body{
     font-size: medium;
 }
 
+header {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
 /* Page Layout */
 div#content {
     width: 960px;

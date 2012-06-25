@@ -26,4 +26,9 @@ class CoreTest(unittest.TestCase):
         log.debug("calling test_redirect_issues")
         response = self.client.post('/issues/0')
         self.assertGreaterEqual(response.status_code, 300)
- 
+
+    def test_redirect_comments(self):
+        log.debug("calling test_redirect_comments")
+        response = self.client.post('/comments/0/0')
+        self.assertGreaterEqual(response.status_code, 300)
+         
